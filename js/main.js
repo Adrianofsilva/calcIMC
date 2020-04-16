@@ -1,27 +1,21 @@
-
-
-
-
+// INSTANCIAR CONTEUDO HTML
 // PESO
 var pesoSlider = document.getElementById("peso")
 var pesoOutput = document.getElementById("valorPeso")
-
-pesoOutput.innerHTML = pesoSlider.value
-
-
-pesoSlider.oninput = function () {
-    pesoOutput.innerHTML = this.value
-}
-
-
 // ALTURA
-
 var alturaSlider = document.getElementById("altura")
 var alturaOutput = document.getElementById("valoraltura")
 
-// alturaOutput.innerHTML = alturaSlider.value
 
 
+// MONSTRAR VALOR DO RANGE NO SPAN
+//PESO 
+pesoOutput.innerHTML = pesoSlider.value
+pesoSlider.oninput = function () {
+    pesoOutput.innerHTML = this.value
+}
+//ALTURA
+alturaOutput.innerHTML = alturaSlider.value
 alturaSlider.oninput = function () {
     alturaOutput.innerHTML = Number.parseFloat(this.value / 100)
 }
@@ -32,18 +26,17 @@ var imcResult = document.getElementById("imcResult")
 function calcIMC() {
 
     //converter altura p decimal
-
     var altura = alturaSlider.value / 100
-
     altura *= altura
 
 
-    //calculando IMG
+    //calculando IMC
     var imc = pesoSlider.value / altura.toPrecision(4)
 
 
 
     //resultado IMC
+    //USAR CASE
     if (imc < 18.5) {
         imcResult.innerHTML = imc.toPrecision(4)
         imcResult.style.borderColor = "#0092CE"
@@ -74,6 +67,5 @@ function calcIMC() {
         imcResult.style.borderColor = "#770C0C"
         console.log("6")
     }
-
     console.log(imc)
 }
